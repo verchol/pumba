@@ -18,7 +18,7 @@ steps:
 
   compile-pubma:
     description: compile Pumba binary, using builder image
-    image: {{setup-builder}}
+    image: verchol/builder:codefresh
     working-directory: {{initial-clone}}
     commands:
     - ls -al
