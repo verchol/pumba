@@ -20,6 +20,9 @@ steps:
     description: compile Pumba binary, using builder image
     image: verchol/builder:codefresh
     working-directory: {{initial-clone}}
+  #  when:
+  #    - name: "Execute a only when the branch contains the string 'FB', case sensitive"
+  #      condition: "match('${{CF_BRANCH}}', 'codefresh', true)"
     commands:
     - ls -al
     - script/go_build.sh
