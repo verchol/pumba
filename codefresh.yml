@@ -22,7 +22,7 @@ steps:
     working-directory: ${{initial-clone}}
     commands:
     - ls -al
-    - #script/go_build.sh
+    - script/go_build.sh
 
   go-pumba:
     description: compile Pumba binary, using builder image
