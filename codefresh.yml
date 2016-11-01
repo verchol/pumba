@@ -8,7 +8,7 @@ steps:
     dockerfile: Build.Dockerfile
     image-name: pumba/builder
 
-  go-pumba:
+  compile-pubma:
     description: compile Pumba binary, using builder image
     image: pumba/builder
     working-directory: {{initial-clone}}
