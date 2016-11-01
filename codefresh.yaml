@@ -11,12 +11,21 @@ steps:
   go-pumba:
     description: compile Pumba binary, using builder image
     image: pumba/builder
+    working-directory: {{initial-clone}}
     commands:
     - ls -al
     - script/go_build.sh
 
-  package-pumba:
-    type: build
-    description: build Pumba into Docker container
-    image-name: pumba/pumba
-    tag: cf
+  go-pumba:
+    description: compile Pumba binary, using builder image
+    image: pumba/builder
+    working-directory: {{initial-clone}}
+    commands:
+      - ls ./.dist
+
+
+  #package-pumba:
+  #  type: build
+  #  description: build Pumba into Docker container
+  #  image-name: pumba/pumba
+  #  tag: cf
