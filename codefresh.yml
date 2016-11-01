@@ -1,36 +1,33 @@
 version: '1.0'
-## PUBMA YAML
+## PUB
 steps:
 
-  # setup-builder:
-  #   type: build
-  #   description: create Pumba Go builder image (Go, tools, and libraries)
-  #   dockerfile: Build.Dockerfile
-  #   image-name: verchol/builder
-  #   tag: test
-  #
-  # push-step:
-  #   type: push
-  #   description: Free text description
-  #   candidate: verchol/builder
-  #   tag: test
+  setup-builder:
+    type: build
+    description: create Pumba Go builder image (Go, tools, and libraries)
+    dockerfile: Build.Dockerfile
+    image-name: verchol/builder
+    tag: test
+
+  #push-step:
+  #  type: push
+  #  description: Free text description
+  #  candidate: verchol/builder
+  #  tag: test
 
 
   compile-pubma:
     description: compile Pumba binary, using builder image
-    image: verchol/builder:codefresh
-    working-directory: {{initial-clone}}
-  #  when:
-  #    - name: "Execute a only when the branch contains the string 'FB', case sensitive"
-  #      condition: "match('${{CF_BRANCH}}', 'codefresh', true)"
+    image: ${{setup-builder}}
+    working-directory: ${{initial-clone}}
     commands:
     - ls -al
     - script/go_build.sh
 
   go-pumba:
     description: compile Pumba binary, using builder image
-    image: {{setup-builder}}
-    working-directory: {{initial-clone}}
+    image: ${{setup-builder}}
+    working-directory: ${{initial-clone}}
     commands:
       - ls ./.dist
 
