@@ -11,16 +11,16 @@ steps:
 
   compile-pubma:
     description: compile Pumba binary, using builder image
-    image: {{setup-builder}}
-    working-directory: {{initial-clone}}
+    image: ${{setup-builder}}
+    working-directory: ${{initial-clone}}
     commands:
-    - ls -al
-    - script/go_build.sh
+      - ls -al
+      - script/go_build.sh
 
   go-pumba:
     description: compile Pumba binary, using builder image
-    image: {{setup-builder}}
-    working-directory: {{initial-clone}}
+    image: ${{setup-builder}}
+    working-directory: ${{initial-clone}}
     commands:
       - ls ./.dist
 
