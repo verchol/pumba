@@ -1,46 +1,24 @@
 version: '1.0'
-## PUB
+#pubma CI/CD flow
 steps:
 
   setup-builder:
     type: build
     description: create Pumba Go builder image (Go, tools, and libraries)
     dockerfile: Build.Dockerfile
-    image-name: verchol/builder
-    tag: test
+    image-name: pumba/builder
 
-  #push-step:
-  #  type: push
-  #  description: Free text description
-  #  candidate: verchol/builder
-  #  tag: test
-
-
-  compile-pubma:
+  go-pumba:
     description: compile Pumba binary, using builder image
-    image: ${{setup-builder}}
-    working-directory: ${{initial-clone}}
+    image: pumba/builder
+    working_directory: ${initial-clone}
     commands:
     - ls -al
     - script/go_build.sh
 
-  go-pumba:
-    description: compile Pumba binary, using builder image
-    image: ${{setup-builder}}
-    working-directory: ${{initial-clone}}
-    commands:
-      - ls ./.dist
-
-  go-amazon:
-      description: compile Pumba binary, using builder image
-      image: ecs-deploy:latest
-      working-directory: ${{initial-clone}}
-      commands:
-        - ls ./.dist
-
-
-  #package-pumba:
-  #  type: build
-  #  description: build Pumba into Docker container
-  #  image-name: pumba/pumba
-  #  tag: cf
+  package-pumba:
+    type: build
+    description: build Pumba into Docker container
+    working_directory: ${initial-clone}
+    image-name: pumba/pumba
+    tag: cf
