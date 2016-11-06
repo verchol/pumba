@@ -11,7 +11,7 @@ steps:
 
   go-pumba:
     description: compile Pumba binary, using builder image
-    image: pumba/builder:cf
+    image: verchol/pumba-builder:cf
     working_directory: ${initial-clone}
     commands:
       - script/go_build.sh
@@ -19,7 +19,7 @@ steps:
   push-step:
     type: push
     description: Free text description
-    candidate: ${{setup-builder}}
+    candidate: verchol/pumba-builder
     tag: cf
     registry: index.docker.io
     credentials:
