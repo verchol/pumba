@@ -19,7 +19,7 @@ steps:
       - script/go_build.sh
       - echo currnet dir - $PWD
       - echo $GOPATH
-      - cp -r ./dist /codeferesh/volume/
+      - cp -r ./.dist /codeferesh/volume/
   push-step:
     type: push
     description: Free text description
