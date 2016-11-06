@@ -6,26 +6,37 @@ steps:
     type: build
     description: create Pumba Go builder image (Go, tools, and libraries)
     dockerfile: Build.Dockerfile
-    image-name: pumba/builder
+    image-name: verchol/pumba-builder
+    tag: cf
 
   go-pumba:
     description: compile Pumba binary, using builder image
-    image: pumba/builder
+    image: pumba/builder:cf
     working_directory: ${initial-clone}
     commands:
       - script/go_build.sh
       - ls
+  push-step:
+    type: push
+    description: Free text description
+    candidate: ${{setup-builder}}
+    tag: cf
+    registry: index.docker.io
+    credentials:
+      username: ${{DOCKER_HUB_USERNAME}}
+      password: ${{DOCKER_HUB_PASSWORD}}
+    fail-fast: false
 
   validate-pumba:
     description: compile Pumba binary, using builder image
-    image: pumba/builder
+    image: ${{setup-builder}}
     working_directory: ${initial-clone}
     commands:
       - ls -al
 
 
-  package-pumba:
-    type: build
-    description: build Pumba into Docker container
-    image-name: pumba/pumba
-    tag: cf
+#  package-pumba:
+#    type: build
+#    description: build Pumba into Docker container
+#    image-name: ${{setup-builder}}
+#    tag: cf
