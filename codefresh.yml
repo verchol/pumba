@@ -14,7 +14,7 @@ steps:
     image: ${{setup-builder}}
     working_directory: ${{initial-clone}}
     environment:
-       - DIST="distcf"
+       - DIST=distcf
     commands:
       - script/go_build.sh
       - ls
