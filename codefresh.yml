@@ -34,7 +34,7 @@ steps:
     image: ${{setup-builder}}
     working_directory: ${{initial-clone}}
     commands:
-      - ls distcf
+      - ls -a
 
 
 #  package-pumba:
