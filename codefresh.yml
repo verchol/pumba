@@ -20,7 +20,7 @@ steps:
       - echo currnet dir - $PWD
       - echo $GOPATH
       - ls /.dist
-      - cp -r /.dist /codefresh/volume/.dist
+      - cp -r /.dist /codefresh/volume/pumba/.dist
   push-step:
     type: push
     description: Free text description
