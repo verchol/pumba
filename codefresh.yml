@@ -19,7 +19,7 @@ steps:
   push-step:
     type: push
     description: Free text description
-    candidate: verchol/pumba-builder
+    candidate: ${{initial-clone}}
     tag: cf
     registry: index.docker.io
     credentials:
