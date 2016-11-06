@@ -17,6 +17,7 @@ steps:
        - DIST=distcf
     commands:
       - script/go_build.sh
+      - echo currnet dir - $PWD
       - ls
   push-step:
     type: push
@@ -34,7 +35,7 @@ steps:
     image: ${{setup-builder}}
     working_directory: ${{initial-clone}}
     commands:
-      - ls -a
+      - ls
 
 
 #  package-pumba:
