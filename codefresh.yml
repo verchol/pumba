@@ -18,7 +18,7 @@ steps:
     commands:
       - script/go_build.sh
       - echo currnet dir - $PWD
-      - ls
+      - echo $GOPATH
   push-step:
     type: push
     description: Free text description
