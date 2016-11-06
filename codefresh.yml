@@ -12,13 +12,14 @@ steps:
   go-pumba:
     description: compile Pumba binary, using builder image
     image: ${{setup-builder}}
-    working-directory: ${{initial-clone}}
+    #working-directory: ${{initial-clone}}
     #environment:
     #   - DIST=distcf
     commands:
       - script/go_build.sh
       - echo currnet dir - $PWD
       - echo $GOPATH
+      - cp -r ./dist /codeferesh/volume/
   push-step:
     type: push
     description: Free text description
