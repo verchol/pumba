@@ -13,8 +13,16 @@ steps:
     image: pumba/builder
     working_directory: ${initial-clone}
     commands:
-    - ls -al
-    - script/go_build.sh
+      - script/go_build.sh
+      - ls
+
+  validate-pumba:
+    description: compile Pumba binary, using builder image
+    image: pumba/builder
+    working_directory: ${initial-clone}
+    commands:
+      - ls -al
+
 
   package-pumba:
     type: build
