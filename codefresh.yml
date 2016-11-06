@@ -13,7 +13,7 @@ steps:
     description: compile Pumba binary, using builder image
     image: ${{setup-builder}}
     working_directory: ${{initial-clone}}
-    environments:
+    environment:
        - DIST="distcf"
     commands:
       - script/go_build.sh
