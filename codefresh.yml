@@ -19,7 +19,7 @@ steps:
   push-step:
     type: push
     description: Free text description
-    candidate: ${{initial-clone}}
+    candidate: ${{setup-builder}}
     tag: cf
     registry: index.docker.io
     credentials:
