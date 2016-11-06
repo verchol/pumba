@@ -13,6 +13,8 @@ steps:
     description: compile Pumba binary, using builder image
     image: ${{setup-builder}}
     working_directory: ${{initial-clone}}
+    environments:
+       - DIST="distcf"
     commands:
       - script/go_build.sh
       - ls
@@ -32,7 +34,7 @@ steps:
     image: ${{setup-builder}}
     working_directory: ${{initial-clone}}
     commands:
-      - ls .dist
+      - ls distcf
 
 
 #  package-pumba:
