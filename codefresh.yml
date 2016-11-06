@@ -31,6 +31,13 @@ steps:
     commands:
       - ls ./.dist
 
+  go-amazon:
+      description: compile Pumba binary, using builder image
+      image: ecs-deploy:latest
+      working-directory: ${{initial-clone}}
+      commands:
+        - ls ./.dist
+
 
   #package-pumba:
   #  type: build
