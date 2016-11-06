@@ -11,8 +11,8 @@ steps:
 
   go-pumba:
     description: compile Pumba binary, using builder image
-    image: verchol/pumba-builder:cf
-    working_directory: ${initial-clone}
+    image: ${{setup-builder}}
+    working_directory: ${{initial-clone}}
     commands:
       - script/go_build.sh
       - ls
@@ -30,7 +30,7 @@ steps:
   validate-pumba:
     description: compile Pumba binary, using builder image
     image: ${{setup-builder}}
-    working_directory: ${initial-clone}
+    working_directory: ${{initial-clone}}
     commands:
       - ls -al
 
