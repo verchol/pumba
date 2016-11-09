@@ -1,5 +1,5 @@
 version: '1.0'
-#pubma CI/CD flow v1.0
+#pubma CI/CD flow v1.1
 steps:
 
   setup-builder:
