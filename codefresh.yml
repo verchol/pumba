@@ -32,6 +32,14 @@ steps:
       password: ${{DOCKER_HUB_PASSWORD}}
     fail-fast: false
 
+  pumba-builder:
+    type: build
+    description: create Pumba Go builder image (Go, tools, and libraries)
+    dockerfile: Dockerfile
+    image-name: verchol/pumba
+    tag: ${{CF_BRANCH}}
+
+
   validate-pumba:
     description: compile Pumba binary, using builder image
     image: ${{setup-builder}}
