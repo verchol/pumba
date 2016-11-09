@@ -39,6 +39,16 @@ steps:
     image-name: verchol/pumba
     tag: ${{CF_BRANCH}}
 
+  push-step:
+    type: push
+    description: Free text description
+    candidate: verchol/pumba
+    tag: ${{CF_BRANCH}}
+    registry: index.docker.io
+    credentials:
+        username: ${{DOCKER_HUB_USERNAME}}
+        password: ${{DOCKER_HUB_PASSWORD}}
+    fail-fast: false
 
   validate-pumba:
     description: compile Pumba binary, using builder image
